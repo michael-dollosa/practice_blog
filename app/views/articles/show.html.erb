@@ -1,12 +1,21 @@
-<table>
-  <tbody>
-    <tr>
-      <th><%= @article.id %></th>
-    </tr>
-    <tr>
-      <th><%= @article.name %></th>
-    </tr><tr>
-      <th><%= @article.body %></th>
-    </tr>
-  </tbody>
-</table>
+<section class="article-container">
+  <div class="article-item">
+    <div class="article-header">
+      <div class="username">
+        by: <span class="username-label"><%= @article.user.username %></span> 
+      </div>
+        <div class="date">
+          Created <span class="date-label"> <%= @article.created_at.strftime("%d %b. %Y") %> </span>
+        </div>
+    </div>
+    <div class="article-body">
+      <%= @article.body %>
+    </div>
+    <div class="article-options">
+      <% if @article.user_id == check_current_user&.id %>
+        <%= link_to "Delete", article_delete_path(@article.id), class: "delete", method: :delete %>
+        <%= link_to "Edit", article_edit_path(@article.id), class: "edit" %>
+      <% end %>
+    </div>
+  </div>
+</section>

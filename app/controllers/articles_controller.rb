@@ -1,11 +1,22 @@
 class ArticlesController < ApplicationController
 
+  before_action :require_login, except:[:index]
+
   def index
-    @articles = Article.all
+    @articles = Article.all.order(created_at: :desc)
+    @article = Article.new
   end
 
   def show
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+      unless session[:user_id] == @article.user_id
+        redirect_to article_path
+        return
+      end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to article_path
+    end
   end
 
   def new
@@ -14,23 +25,32 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    return redirect_to articles_path if @article.save
-    render :new
+    @article.user_id = check_current_user.id
+    return redirect_to article_path if @article.save
+    redirect_to article_path
   end
 
   def edit
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+      unless session[:user_id] == @article.user_id
+        redirect_to article_path
+        return
+      end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to article_path
+    end
   end
 
   def update
     @article = Article.find(params[:id])
-    return redirect_to articles_path if @article.update(article_params)
+    return redirect_to article_path if @article.update(article_params)
     render :edit
   end
 
   def delete
     @article = Article.find(params[:id])
-    return redirect_to articles_path if @article.delete
+    return redirect_to article_path if @article.delete
     render :index
   end
 

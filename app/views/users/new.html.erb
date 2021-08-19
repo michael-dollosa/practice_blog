@@ -1,0 +1,17 @@
+<section class="form-container">
+  <div class="form-label">
+    <h1>CREATE ACCOUNT</h1>
+  </div>
+
+  <div class="login-form">
+    <%= form_with(scope: :user, url: user_new_path, method: :post,  local: true) do |form| %>
+      <div class="form-main">
+        <%= form.text_field :username, placeholder: "Enter username" %>
+        <%= form.email_field :email, placeholder: "Enter email" %>
+        <%= form.password_field :password, placeholder: "Choose password" %>
+        <%= form.password_field :password_confirmation, placeholder: "Confirm password" %>
+        <%= form.submit "Create Account" %>
+      </div>
+    <% end %>
+  </div>
+</section>

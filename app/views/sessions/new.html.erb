@@ -1,0 +1,15 @@
+<section class="form-container">
+  <div class="form-label">
+    <h1>LOGIN ACCOUNT</h1>
+  </div>
+
+  <div class="login-form">
+    <%= form_with(scope: :session, url: login_path, method: :post,  local: true) do |form| %>
+      <div class="form-main">
+        <%= form.email_field :email, placeholder: "Enter email" %>
+        <%= form.password_field :password, placeholder: "Enter password" %>
+        <%= form.submit "Login", class: "login-submit" %>
+      </div> 
+    <% end %>
+  </div>
+</section>
