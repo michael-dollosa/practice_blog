@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PracticeBlog</title>
+    <title>C H I S M I S</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,13 +11,20 @@
   </head>
 
   <body>
-  <nav>
-    <%= render "layouts/navigation" %>
-  </nav>
-
-  <main>  
-    <%= yield %>
-  </main>
+  <section class="top-container">
+    <nav>
+      <%= render "layouts/navigation" %>
+    </nav>
+    <main>  
+      <%= yield %>
+    </main>
+  </section>
+  <section class="bottom-container">
+    <footer>
+    Created by Christian Michael Dollosa. © 2021
+    </footer>
+  </section>
+  
     
   </body>
 </html>

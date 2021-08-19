@@ -23,8 +23,31 @@
 }
 
 body{
+  min-height: 100vh;
   font-size: 62.5%;
   font-family: 'Fira Mono', monospace;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  >.top-container{
+    width:100%;
+    height: auto;
+    flex-grow: 10;
+    margin-bottom: 2rem;
+  }
+
+  >.bottom-container{
+    flex-grow: 1;
+    width:100%;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 main{
