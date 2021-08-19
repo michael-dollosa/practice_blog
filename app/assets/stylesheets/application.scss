@@ -136,6 +136,9 @@ form{
       font-size: 1rem;
       padding-left: 1rem;
       outline: none;
+      @media only screen and (max-width: 950px) {
+        height: 3rem;
+      }
     }
 
     >input[type=submit]{
@@ -145,8 +148,10 @@ form{
       padding: .3rem;
       cursor: pointer;
       transition: .5s;
+      @media only screen and (max-width: 950px) {
+        height: 2rem;
+      }
     }
-
     
     >input[type=submit]:hover{
       background-color: pink;
@@ -183,3 +188,4 @@ a:hover{
     list-style-type: none;
   }
 }
+
