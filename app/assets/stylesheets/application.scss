@@ -48,6 +48,10 @@ body{
     align-items: center;
     justify-content: center;
   }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 32.5%;
+  }
 }
 
 main{
@@ -85,6 +89,10 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+
+    @media only screen and (max-width: 500px) {
+      width: 95%;
+    }
 
     >.field_with_errors{
       width: 100%;
